@@ -1,9 +1,18 @@
 from django.shortcuts import render,HttpResponse
+from .models import ProfileUSer
 
 def ProfileView(request):
 
 
-    return HttpResponse("این صفحه پروفایل کاربران است")
+    users=ProfileUSer.objects.all()
+
+
+    return render(request,"Profile_app/index.html",context={"users":users})
+
+
+def Profile_User(request,name):
+
+    return render(request,"Profile_app/users.html",context={"name":name})
 
 
 
